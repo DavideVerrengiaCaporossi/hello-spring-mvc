@@ -1,6 +1,7 @@
 package jana60.controller;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,8 @@ public class Maincontroller {
 	@GetMapping ("/ora")
 	public String ora(Model model) {
 		LocalDateTime now = LocalDateTime.now();
-		model.addAttribute("orario",now);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		model.addAttribute("orario",now.format(formatter));
 		return "Ora";
 		
 	}
